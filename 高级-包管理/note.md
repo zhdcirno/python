@@ -13,8 +13,16 @@
         
 - 如何使用模块
     - 模块之间导入
-        - 加入
+        - 假如模块名称直接以数字开头，需要借助importlib帮助
     - 语法
         import module_name
         module_name.function_name
         module_name.class_name
+    - 案例 p01,p02
+    - import 模块 as 别名
+        - 导入的同时给模块起一个别名
+        - 其余用法和第一种相同
+        - 案例p03
+    - from module_name import func_name, class_name
+        - 按上述方法有选择性的导入
+        - 案例 p04
