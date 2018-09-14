@@ -25,4 +25,79 @@
         - 案例p03
     - from module_name import func_name, class_name
         - 按上述方法有选择性的导入
+        - 使用的时候可以直接使用导入的内容，不需要前缀
         - 案例 p04
+    - from module_name import *
+        - 导入模块的所有内容
+        - 案例 p05
+- 'if __name__ == "__main__" '的使用
+    - 可以有效避免模块代码被导入的时候被执行的问题
+    - 建议所有程序的入口都加入此代码为入口
+    
+# 2. 模块的搜索路径和储存
+- 什么是模块的搜索路径：
+    - 加载模块的时候，系统会在那些地方寻找此模块
+- 系统默认的模块搜索路径
+
+        import sys
+        sys.path 属性可以获取路径列表
+        # 案例p06
+- 添加搜索路径
+
+        sys.path.append(dir)
+- 模块的加载顺序
+    - 1. 先搜索内存中已经加载好的模块
+    - 2. 搜索Python的内置模块
+    - 3. 搜索sys.path路径
+    
+# 包
+- 包是一种组织管理代码的方式，包里面存放的是模块
+- 用于将模块包含在一起的文件就是包
+- 自定义包的结构
+
+        /---包
+        /---/--- __init__.py 包的标志文件
+        /---/--- 模块1
+        /---/--- 模块2
+        /---/--- 子包（子文件夹）
+        /---/---/--- __init__.py 包的标志文件
+        /---/---/--- 子包模块1
+        /---/---/--- 子包模块2      
+        
+- 包的导入操作
+    - import package_name
+        - 直接导入一个包，可以使用__init__.py中的内容
+        - 使用方式：
+            
+                package_name.func_name
+                package_name.class_name.func_name()
+        - 此种方式的访问内容是
+        - 案例 pkg01， p07.py
+    - import package_name as p
+        - 具体用法跟作用方式，跟上述简单导入一致
+        - 注意的是此种方法是默认对__init__.py内容的导入
+    - import package.module
+        - 导入包中某一个具体的模块
+        - 使用方法
+        
+                package.module.func_name
+                package.module.class.fun()
+                package.module.class.var
+        - 案例p08
+    - import package.module as pm
+    
+- from ... import 导入
+    - from package import module
+    - 此种导入方法不执行'__init__'的内容
+    
+            from pkg01 import p01
+            p01.sayHello()
+    - from package import *
+        - 导入当前包 '__init__.py' 文件中所有的函数和类
+        - 使用方法
+                
+                func_name()
+                class_name.func_name()
+                class_name.var
+                
+        - 案例
